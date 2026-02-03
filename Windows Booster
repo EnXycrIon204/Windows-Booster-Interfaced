@@ -1,0 +1,15 @@
+@echo off
+echo Activating boost configuration 
+
+reg add "HKLM\SYSTEM\CurrentControlSet\Control" /v BootDelay /t REG_DWORD /d 0 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v AutoRestartShell /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon" /v Shell /t REG_SZ /d "explorer.exe" /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v SynchronousMachineGroupPolicy /t REG_DWORD /d 0 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v SynchronousUserGroupPolicy /t REG_DWORD /d 0 /f
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\LogonUI" /v IdleTime /t REG_DWORD /d 0 /f
+
+echo Disabling startup delays...
+timeout /t 1 >nul
+shutdown /r /t 0
+echo The system scripts is activated successfully.
+echo Credits by: (+_Enxycrion_+)
